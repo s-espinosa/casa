@@ -135,7 +135,7 @@ RSpec.describe "layout/sidebar", type: :view do
       it "does not render emancipation checklist(s)" do
         sign_in user
 
-        inactive_case = build_stubbed(:casa_case, :transition_aged, casa_org: organization,active: false)
+        inactive_case = build_stubbed(:casa_case, :transition_aged, casa_org: organization, active: false)
         build_stubbed(:case_assignment, volunteer: user, casa_case: inactive_case)
 
         unassigned_case = build_stubbed(:casa_case, :transition_aged, casa_org: organization)
