@@ -188,7 +188,7 @@ RSpec.describe CaseContact, type: :model do
     end
 
     describe ".has_transitioned" do
-      let(:casa_case_1) { create(:casa_case, transition_aged_youth: true) }
+      let(:casa_case_1) { create(:casa_case, :transition_aged) }
       let(:casa_case_2) { create(:casa_case, transition_aged_youth: false) }
 
       context "with both option" do

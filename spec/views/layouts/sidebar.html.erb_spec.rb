@@ -135,10 +135,10 @@ RSpec.describe "layout/sidebar", type: :view do
       it "does not render emancipation checklist(s)" do
         sign_in user
 
-        inactive_case = build_stubbed(:casa_case, casa_org: organization, :transition_aged, active: false)
+        inactive_case = build_stubbed(:casa_case, :transition_aged, casa_org: organization,active: false)
         build_stubbed(:case_assignment, volunteer: user, casa_case: inactive_case)
 
-        unassigned_case = build_stubbed(:casa_case, casa_org: organization, transition_aged_youth: true)
+        unassigned_case = build_stubbed(:casa_case, :transition_aged, casa_org: organization)
         build_stubbed(:case_assignment, volunteer: user, casa_case: unassigned_case, active: false)
 
         render partial: "layouts/sidebar"
@@ -147,7 +147,7 @@ RSpec.describe "layout/sidebar", type: :view do
     end
 
     context "when the volunteer has a transitioning case" do
-      let(:casa_case) { create(:casa_case, casa_org: organization, transition_aged_youth: true) }
+      let(:casa_case) { create(:casa_case, casa_org: organization, :transition_aged) }
       let!(:case_assignment) { create(:case_assignment, volunteer: user, casa_case: casa_case) }
 
       it "renders emancipation checklist(s)" do
