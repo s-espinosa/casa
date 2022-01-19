@@ -1,7 +1,7 @@
 class CasaCase < ApplicationRecord
   include ByOrganizationScope
   include DateHelper
-  self.ignored_columns = [:transition_aged_youth] # deprecating in favor of calculating via birth_month_year_youth
+  # self.ignored_columns = [:transition_aged_youth] # deprecating in favor of calculating via birth_month_year_youth
 
   has_paper_trail
 
