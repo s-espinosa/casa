@@ -17,6 +17,7 @@ class CasaCase < ApplicationRecord
 
   TRANSITION_AGE_YOUTH_ICON = "🦋".freeze
   NON_TRANSITION_AGE_YOUTH_ICON = "🐛".freeze
+  TRANSITION_AGE_YOUTH_DATE_CUTOFF = 14.years.ago.freeze
 
   has_paper_trail
 
@@ -70,7 +71,7 @@ class CasaCase < ApplicationRecord
   }
   scope :should_transition, -> {
     where(transition_aged_youth: false)
-      .where("birth_month_year_youth <= ?", 14.years.ago)
+      .where("birth_month_year_youth <= ?", CasaCase::TRANSITION_AGE_YOUTH_DATE_CUTOFF)
   }
 
   scope :due_date_passed, -> {
@@ -127,7 +128,7 @@ class CasaCase < ApplicationRecord
   end
 
   def in_transition_age?
-    birth_month_year_youth.nil? ? false : birth_month_year_youth <= 14.years.ago
+    birth_month_year_youth.nil? ? false : birth_month_year_youth <= CasaCase::TRANSITION_AGE_YOUTH_DATE_CUTOFF
   end
 
   def latest_court_report
@@ -151,7 +152,7 @@ class CasaCase < ApplicationRecord
   end
 
   def has_transitioned?
-    birth_month_year_youth <= 14.years.ago
+    birth_month_year_youth <= CasaCase::TRANSITION_AGE_YOUTH_DATE_CUTOFF
   end
 
   def remove_emancipation_category(category_id)

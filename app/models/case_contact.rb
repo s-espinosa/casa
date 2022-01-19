@@ -57,9 +57,9 @@ class CaseContact < ApplicationRecord
   scope :has_transitioned, ->(has_transitioned = nil) {
     if /true/.match?(has_transitioned.to_s)
       # joins(:casa_case).where(casa_cases: {transition_aged_youth: has_transitioned})
-      joins(:casa_case).where("casa_cases.birth_month_year_youth <= ?", 14.years.ago)
+      joins(:casa_case).where("casa_cases.birth_month_year_youth <= ?", CasaCase::TRANSITION_AGE_YOUTH_DATE_CUTOFF)
     elsif /false/.match?(has_transitioned.to_s)
-      joins(:casa_case).where("casa_cases.birth_month_year_youth > ?", 14.years.ago)
+      joins(:casa_case).where("casa_cases.birth_month_year_youth > ?", CasaCase::TRANSITION_AGE_YOUTH_DATE_CUTOFF)
     end
   }
   scope :want_driving_reimbursement, ->(want_driving_reimbursement = nil) {
