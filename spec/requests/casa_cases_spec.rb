@@ -107,7 +107,7 @@ RSpec.describe "/casa_cases", type: :request do
           post casa_cases_url, params: {casa_case: valid_attributes}
           casa_case = CasaCase.last
           expect(casa_case.casa_org).to eq organization
-          expect(casa_case.transition_aged_youth).to be true
+          expect(casa_case.has_transitioned?).to be true
           expect(casa_case.hearing_type).to eq hearing_type
           expect(casa_case.judge).to eq judge
         end

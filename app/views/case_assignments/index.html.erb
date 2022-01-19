@@ -20,7 +20,7 @@
         </td>
         <td>
           <span class="mobile-label"><%= t(".heading.transition_aged_youth") %></span>
-          <%= assignment.casa_case.decorate.transition_aged_youth %>
+          <%= assignment.casa_case.decorate.has_transitioned? %>
         </td>
         <td>
           <%= button_to t(".button.unassign"),
