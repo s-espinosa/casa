@@ -70,7 +70,7 @@ RSpec.describe User, type: :model do
         casa_cases = [
           build(:casa_case, :transition_aged, casa_org: casa_org),
           build(:casa_case, :transition_aged, casa_org: casa_org),
-          create(:casa_case, casa_org: casa_org, transition_aged_youth: false)
+          create(:casa_case, :not_transition_aged, casa_org: casa_org)
         ]
 
         casa_cases.each do |casa_case|

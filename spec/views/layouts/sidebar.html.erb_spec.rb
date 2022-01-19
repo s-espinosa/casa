@@ -147,7 +147,7 @@ RSpec.describe "layout/sidebar", type: :view do
     end
 
     context "when the volunteer has a transitioning case" do
-      let(:casa_case) { create(:casa_case, casa_org: organization, :transition_aged) }
+      let(:casa_case) { create(:casa_case, :transition_aged, casa_org: organization) }
       let!(:case_assignment) { create(:case_assignment, volunteer: user, casa_case: casa_case) }
 
       it "renders emancipation checklist(s)" do
