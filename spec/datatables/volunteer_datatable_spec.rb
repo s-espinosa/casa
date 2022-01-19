@@ -173,7 +173,7 @@ RSpec.describe "VolunteerDatatable" do
       context "when ascending" do
         it "is successful" do
           sorted_models.each_with_index do |model, idx|
-            expect(values[idx][:has_transition_aged_youth_cases]).to eq model.casa_cases.exists?("birth_month_year_youth <= ?", 14.years.ago).to_s
+            expect(values[idx][:has_transition_aged_youth_cases]).to eq model.casa_cases.any? { |x| x.has_transitioned? }.to_s
           end
         end
       end
@@ -184,7 +184,7 @@ RSpec.describe "VolunteerDatatable" do
 
         it "is successful" do
           sorted_models.reverse.each_with_index do |model, idx|
-            expect(values[idx][:has_transition_aged_youth_cases]).to eq model.casa_cases.exists?("birth_month_year_youth <= ?", 14.years.ago).to_s
+            expect(values[idx][:has_transition_aged_youth_cases]).to eq model.casa_cases.any? { |x| x.has_transitioned? }.to_s
           end
         end
       end
