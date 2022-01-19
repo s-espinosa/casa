@@ -185,7 +185,7 @@ RSpec.describe User, type: :model do
   describe "#serving_transition_aged_youth?" do
     let(:user) { build(:volunteer) }
     let!(:case_assignment_without_transition_aged_youth) do
-      build(:case_assignment, casa_case: build_stubbed(:casa_case, casa_org: user.casa_org, transition_aged_youth: false), volunteer: user)
+      build(:case_assignment, casa_case: build_stubbed(:casa_case, :not_transition_aged, casa_org: user.casa_org), volunteer: user)
     end
 
     context "when the user has a transition-aged-youth case" do
