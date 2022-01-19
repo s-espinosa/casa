@@ -42,7 +42,7 @@
           <td><%= casa_case.hearing_type_name %></td>
           <td><%= casa_case.judge_name %></td>
           <td><%= casa_case.decorate.status %></td>
-          <td><%= casa_case.decorate.has_transitioned? %></td>
+          <td><%= casa_case.decorate.transition_aged_youth %></td>
           <td>
             <% if casa_case.active? %>
               <% if current_user.volunteer? %>
