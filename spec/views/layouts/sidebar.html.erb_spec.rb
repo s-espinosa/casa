@@ -123,7 +123,7 @@ RSpec.describe "layout/sidebar", type: :view do
         expect(rendered).to_not have_link("Emancipation Checklist", href: "/emancipation_checklists")
 
         # 1 Non transitioning case
-        casa_case = build_stubbed(:casa_case, casa_org: organization, transition_aged_youth: false)
+        casa_case = build_stubbed(:casa_case, :not_transition_aged, casa_org: organization)
         build_stubbed(:case_assignment, volunteer: user, casa_case: casa_case)
 
         render partial: "layouts/sidebar"

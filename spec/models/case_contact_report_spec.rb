@@ -172,7 +172,7 @@ RSpec.describe CaseContactReport, type: :model do
     end
 
     describe "has transitioned behavior" do
-      let(:case_case_1) { build(:casa_case, transition_aged_youth: false) }
+      let(:case_case_1) { build(:casa_case, :not_transition_aged) }
       let(:case_case_2) { build(:casa_case, :transition_aged) }
 
       before(:each) do
